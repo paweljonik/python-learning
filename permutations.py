@@ -6,9 +6,6 @@ from sys import argv
 if len(argv) == 2:
     n = int(argv[1])
 else:
-    n = input("Enter number: ")
+    n = input("Number of elements: ")
 
-def num_of_perms(n):
-   return factorial(n)
-
-print(num_of_perms(n))
+print("Number of permutations for the " + str(n) + "-elements set eguals: " + str(factorial(n)) + ".")
