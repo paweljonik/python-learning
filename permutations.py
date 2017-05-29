@@ -9,3 +9,4 @@ else:
     n = input("Number of elements: ")
 
 print("Number of permutations for the " + str(n) + "-elements set eguals: " + str(factorial(n)) + ".")
+
