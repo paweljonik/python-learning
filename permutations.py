@@ -1,4 +1,6 @@
-# from math import factorial
+#!/usr/bin/env python
+
+from math import factorial
 from sys import argv
 
 if len(argv) == 2:
@@ -6,10 +8,7 @@ if len(argv) == 2:
 else:
     n = input("Enter number: ")
 
-#def num_of_perms(n):
-#    return factorial(n)
-
 def num_of_perms(n):
-    f = (lambda x: x * f(x-1) if x != 0 else 1)
-    return f(n)
+   return factorial(n)
+
 print(num_of_perms(n))
