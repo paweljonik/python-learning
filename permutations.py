@@ -1,20 +1,15 @@
-from itertools import permutations, repeat
+# from math import factorial
+from sys import argv
 
-x = int(input("Enter a number: "))
+if len(argv) == 2:
+    n = int(argv[1])
+else:
+    n = input("Enter number: ")
 
-def numbers(x):
-    for i in range(1, x + 1):
-        yield i
+#def num_of_perms(n):
+#    return factorial(n)
 
-# some possible solutions to investigate:
-# [l[i:i + n] for i in range(0, len(l), n)] 
-# numbers_chunks = (numbers(x:x+100) for x in range(0, len(numbers), 100))
-
-num_list = list(numbers(x))
-num_list_len = len(list(numbers(x)))
-num_list_perm = len(list(permutations(numbers(x))))
-
-print(num_list)
-print("For " + str(num_list_len) + " elements, number of permutations equals: " + str(num_list_perm))
-
-
+def num_of_perms(n):
+    f = (lambda x: x * f(x-1) if x != 0 else 1)
+    return f(n)
+print(num_of_perms(n))
