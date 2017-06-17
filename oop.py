@@ -4,15 +4,16 @@ import datetime
 
 class Being:
     __specie = ""
+    __gender = ""
     __firstName = ""
     __lastName = ""
     __birthDate = ""
     __birthPlace = ""
-    __deathDate = None
-    __deathPlace = None
+
 
     def __init__(self,
             specie,
+            gender,
             firstName,
             lastName,
             birthDate,
@@ -21,6 +22,7 @@ class Being:
             deathPlace,
             notes):
         self.__specie = specie
+        self.__gender = gender
         self.__firstName = firstName
         self.__lastName = lastName
         self.__birthDate = birthDate
@@ -32,6 +34,8 @@ class Being:
         return self.__class__.__name__
     def get_specie(self):
         return self.__specie
+    def get_gender(self):
+        return self.__gender
     def get_firstName(self):
         return self.__firstName
     def get_lastName(self):
@@ -49,21 +53,13 @@ class Being:
     def get_notes(self):
         return self.__notes
     def get_info(self):
-        return "{} {} is a {} {}. \nBorn in {} on {}.".format(self.__firstName,
-                                                    self.__lastName,
-                                                    self.__specie,
-                                                    self.__class__.__name__,
-                                                    self.__birthDate,
-                                                    self.__birthPlace)
-        if len(birthDate) != 0:
-            return "Died in {} on {}.".format(self.__birthDate,
-                                            self.__birthPlace)
-        else:
-            return "Is still alive."
-        if notes != None:
-            return "Notes\: \n{}".format(self.__notes)
-        else:
-            return "Not much more about."
+        return "{} {} is a {} {}. \n {} was born in {} in {}.".format(self.__firstName, 
+                                                                                self.__lastName, 
+                                                                                self.__specie,
+                                                                                self.__class__.__name__,
+                                                                                "He" if self.__gender == "male" else "She", 
+                                                                                self.__birthDate, self.__birthPlace) 
+
     def set_specie(self,specie):
         self.__specie = specie
     def set_firstName(self,firstName):
@@ -83,15 +79,19 @@ class Being:
 
 johndoe = Being(
     "human", 
+    "male", 
     "John", 
     "Doe", 
     "Jan 1st 2000", 
     "Nowhere", 
-    "", "", "He is a nice guy.")
+    " ", 
+    " ", 
+    "He is a nice guy.")
 print(johndoe.get_info())
 
 janedoe = Being(
     "human",
+    "female",
     "Jane",
     "Doe", 
     "Feb 3rd 2001",
