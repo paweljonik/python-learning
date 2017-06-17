@@ -10,7 +10,6 @@ class Being:
     __birthDate = ""
     __birthPlace = ""
 
-
     def __init__(self,
             specie,
             gender,
@@ -53,12 +52,16 @@ class Being:
     def get_notes(self):
         return self.__notes
     def get_info(self):
-        return "{} {} is a {} {}. \n {} was born in {} in {}.".format(self.__firstName, 
-                                                                                self.__lastName, 
-                                                                                self.__specie,
-                                                                                self.__class__.__name__,
-                                                                                "He" if self.__gender == "male" else "She", 
-                                                                                self.__birthDate, self.__birthPlace) 
+        return "{} {} is a {} {}. \n{} was born in {} in {}.".format(
+            self.__firstName, 
+            self.__lastName, 
+            self.__specie, 
+            self.__class__.__name__, 
+            "He" if self.__gender == "male" else "She", 
+            self.__birthDate, 
+            self.__birthPlace), " Died on {} in {}.".format(
+                self.__deathDate, 
+                self.__deathPlace) if self.__deathDate != "" else "", "\n{}".format(self.__notes) if self.__notes != "" else ""
 
     def set_specie(self,specie):
         self.__specie = specie
@@ -84,10 +87,11 @@ johndoe = Being(
     "Doe", 
     "Jan 1st 2000", 
     "Nowhere", 
-    " ", 
-    " ", 
+    "", 
+    "", 
     "He is a nice guy.")
-print(johndoe.get_info())
+
+print(''.join(johndoe.get_info()))
 
 janedoe = Being(
     "human",
@@ -100,9 +104,7 @@ janedoe = Being(
     "Abys", 
     "She was a nice girl.")
 
-print(janedoe.get_info())
-
-print(johndoe.get_deathDate())
+print(''.join(janedoe.get_info()))
 
 
 
